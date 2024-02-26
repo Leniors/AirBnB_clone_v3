@@ -11,7 +11,7 @@ from api.v1.views import app_views
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get_states():
     states = storage.all(State)
-    return jsonify([state.to_dict() for state in states.values()])
+    return jsonify([state.to_dict() for state in states.values()]), 200
 
 
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
@@ -19,7 +19,7 @@ def get_state(state_id):
     state = storage.get(State, state_id)
     if state is None:
         abort(404)
-    return jsonify(state.to_dict())
+    return jsonify(state.to_dict()), 200
 
 
 @app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
