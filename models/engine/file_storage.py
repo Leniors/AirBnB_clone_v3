@@ -74,7 +74,7 @@ class FileStorage:
         for val in self.__objects.values():
             if val.id == id:
                 obj = val
-            return obj
+                return obj
 
     def count(self, cls=None):
         """count number of elements"""
