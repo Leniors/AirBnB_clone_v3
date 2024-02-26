@@ -11,8 +11,6 @@ from api.v1.views import app_views
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get_states():
     states = storage.all(State)
-    if not states:
-        abort(404)
     return jsonify([state.to_dict() for state in states.values()]), 200
 
 
