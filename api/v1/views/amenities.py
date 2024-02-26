@@ -4,16 +4,16 @@ handle State objects
 """
 from flask import jsonify, abort, request
 from models import storage
-from models.state import State
+from models.amenity import Amenity
 from api.v1.views import app_views
 
 
-@app_views.route('/states', methods=['GET'], strict_slashes=False)
-def get_states():
-    states = storage.all(State)
-    if not states:
+@app_views.route('/amenities', methods=['GET'], strict_slashes=False)
+def get_amenities():
+    amenities = storage.all(Amenity)
+    if not amenities:
         abort(404)
-    return jsonify([state.to_dict() for state in states.values()]), 200
+    return jsonify([amenity.to_dict() for amenity in amenities.values()]), 200
 
 
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
